@@ -1,0 +1,39 @@
+name: Build Docker Images
+
+on:
+  push:
+    branches:
+      - main
+    workflow_dispatch:
+
+jobs:
+  build-image-1:
+    runs-on: arc-runner-set
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker image with tag 'latest'
+        run: |
+          docker build -t my-image:latest .
+
+
+  build-image-2:
+    runs-on: arc-runner-set
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker image with tag 'version1'
+        run: |
+          docker build -t my-image:version1 .
+
+  build-image-3:
+    runs-on: arc-runner-set
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker image with tag 'version2'
+        run: |
+          docker build -t my-image:version2 .
